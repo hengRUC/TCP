@@ -1,17 +1,12 @@
-from locale import LC_NUMERIC
-from src.models.bert import (
-    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
-from src.models.video_encoder import SwinTransformer3D
-from src.models.text_encoder import  TextEncoderForMultichoice
 import torch
-import torch.nn.functional as F
 from torch import nn
-import numpy as np
-import random
-import einops
-from src.utils.logger import LOGGER
+from models.bert import (
+    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
+from models.video_encoder import SwinTransformer3D
+from models.text_encoder import  TextEncoderForMultichoice
+
 from timm.models.vision_transformer import Block
-from src.models.tcp_pretrain import VideoTokenPos, SentEmbedding
+from models.tcp_pretrain import VideoTokenPos, SentEmbedding
 
 
 class TCP_QA_Multichoice(nn.Module):
