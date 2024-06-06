@@ -1,19 +1,17 @@
-import torch
 import torch.distributed as dist
 import deepspeed
 import argparse
 import os
 from mmcv import Config
-from src.models import LFVILA_QA_Multichoice, LFVILA_QA_Classification
-from src.tools import Trainer_QA_Multichoice, Trainer_QA_Classification
-from src.datasets.dataloader import build_dataloader
-from src.optimization.lr_scheduler import build_scheduler
-from src.optimization.optimizer import build_optimizer_parameters
+from models import TCP_QA_Multichoice, TCP_QA_Classification
+from datasets.dataloader import build_dataloader
+from optimization.lr_scheduler import build_scheduler
+from optimization.optimizer import build_optimizer_parameters
 
-from src.utils.logger import LOGGER, add_log_to_file
-from src.utils.dist import master_process
-from src.utils.misc import mkdirp, set_random_seed
-from src.utils.load import load_model_weights_with_mismatch
+from utils.logger import LOGGER, add_log_to_file
+from utils.dist import master_process
+from utils.misc import mkdirp, set_random_seed
+from utils.load import load_model_weights_with_mismatch
 
 
 def main():
