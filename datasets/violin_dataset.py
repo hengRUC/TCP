@@ -8,7 +8,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
-from src.utils.logger import LOGGER
+from utils.logger import LOGGER
 
 decord.bridge.set_bridge("torch")
 
