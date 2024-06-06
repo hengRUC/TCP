@@ -1,21 +1,14 @@
-from locale import LC_NUMERIC
-from src.models.bert import (
-    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
-from src.models.video_encoder import SwinTransformer3D
-from src.models.text_encoder import TextEncoderForPretraining
-import torch
-import torch.nn.functional as F
-from torch import nn
-import numpy as np
 import random
-import einops
-from src.utils.logger import LOGGER
-from src.utils.dist import SyncFunction
-from src.utils.misc import vector_gather
+import torch
+from torch import nn
+import torch.nn.functional as F
+from models.bert import (
+    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
+from models.video_encoder import SwinTransformer3D
+from models.text_encoder import TextEncoderForPretraining
 
-from src.tools.soft_dtw import SoftDTW
-from src.tools.Brownian_bridge import PRT
-from timm.models.vision_transformer import Block
+from tools.soft_dtw import SoftDTW
+from tools.Brownian_bridge import PRT
 
 
 class VideoTokenPos(nn.Module):
