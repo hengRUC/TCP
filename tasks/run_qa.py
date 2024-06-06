@@ -7,11 +7,9 @@ import torch
 import torch.distributed as dist
 import deepspeed
 import argparse
-from models import TCP_QA_Multichoice, TCP_QA_Classification
 from mmcv import Config
-from models import TCP_Pretrain
 
-from tools import Trainer_Pretrain
+from models import TCP_QA_Multichoice, TCP_QA_Classification
 from datasets.dataloader import build_dataloader
 from optimization.lr_scheduler import build_scheduler
 from optimization.optimizer import build_optimizer_parameters
