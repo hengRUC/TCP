@@ -10,7 +10,7 @@ from functools import reduce, lru_cache
 from operator import mul
 from einops import rearrange
 import time
-from src.utils.dist import master_process
+from utils.dist import master_process
 
 
 class Mlp(nn.Module):
