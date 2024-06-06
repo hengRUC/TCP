@@ -16,13 +16,13 @@ from .video_classification_dataset import VideoClassificationDataset
 from transformers import BertTokenizer
 from transformers import CLIPTokenizer
 
-from src.utils.logger import LOGGER
-from src.utils.data import mask_batch_text_tokens
+from utils.logger import LOGGER
+from utils.data import mask_batch_text_tokens
 
 from torch.utils.data import DistributedSampler
 from torch.utils.data.dataloader import default_collate
 
-from src.utils.dist import SequentialDistributedSampler
+from utils.dist import SequentialDistributedSampler
 
 
 class PretrainCollator(object):
