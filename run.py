@@ -61,6 +61,7 @@ def parse_args():
 
 
 def main():
+    args = parse_args()
     time = datetime.datetime.now()
     filename = '%s_%d%d%d_%s'%(args.discribe, time.month, time.day, time.hour, Config.dataset)
     save_dir = os.path.join(Config.save_dir, filename)
@@ -72,7 +73,6 @@ def main():
     args.world_size = world_size = torch.cuda.device_count()
     args.total_batch_size = args.train_batch * world_size
 
-    
     # Include DeepSpeed configuration arguments
     parser = deepspeed.add_config_arguments(parser)
     args = parser.parse_args()
@@ -130,10 +130,8 @@ def main():
         logging.info('Enable fp16 Training')
 
     trainer = Trainer_Pretrain(args, config, model_engine, optimizer, scheduler, dataloader_train, dataloader_vals['RetrievalDataset-val'],dataloader_vals['PreTrainDataset-val'])
-    trainer.evaluate(dataloader_vals['RetrievalDataset-val'], stage=1)
-    trainer.evaluate(dataloader_vals['PreTrainDataset-val'], stage=1, pretrain_val=True)
 
-    #train and evaluate
+    #train
     trainer.train(args.resume)
 
 if __name__ == '__main__':
