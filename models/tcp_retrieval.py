@@ -1,20 +1,14 @@
-from locale import LC_NUMERIC
-from src.models.bert import (
-    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
-from src.models.video_encoder import SwinTransformer3D
-from src.models.text_encoder import TextEncoderForPretraining
 import torch
 import torch.nn.functional as F
 from torch import nn
-import numpy as np
-import random
-import einops
-from src.utils.logger import LOGGER
-from src.utils.dist import SyncFunction
-from src.utils.misc import vector_gather
+from models.bert import (
+    BertConfig, BertModel, BertOnlyMLMHead, BertOnlyNSPHead, BertForMaskedLM)
+from models.video_encoder import SwinTransformer3D
+from models.text_encoder import TextEncoderForPretraining
+from utils.dist import SyncFunction
+from utils.misc import vector_gather
 from timm.models.vision_transformer import Block
-from src.models.tcp_pretrain import VideoTokenPos, SentEmbedding
-
+from models.tcp_pretrain import SentEmbedding
 
 class TCP_Retrieval(nn.Module):
     def __init__(self, args, config):
