@@ -129,14 +129,6 @@ class Trainer_Pretrain():
                 self.scheduler.step_update(self.global_step)
                 lr = self.scheduler._get_lr(self.global_step)[0]
 
-                if self.global_step % self.config.TRAINING.eval_step == 0:
-                    if self.config.stage==1:
-                        self.evaluate(self.task_dataloader_val, stage=1)
-                        self.evaluate(self.pre_dataloader_val, stage=1, pretrain_val=True)
-
-                    if self.config.stage==2:
-                        self.evaluate(self.pre_dataloader_val, stage=2, pretrain_val=True)
-
                 if self.global_step % self.config.TRAINING.checkpoint_step == 0:
                     self._checkpoint(self.config.TRAINING.save_dir, self.global_step, epoch, self.global_step)
 
